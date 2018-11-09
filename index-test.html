@@ -1,47 +1,57 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html >
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Flot Examples: AJAX</title>
-	<link href="../examples.css" rel="stylesheet" type="text/css">
-	<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="../../excanvas.min.js"></script><![endif]-->
-	<script language="javascript" type="text/javascript" src="../../jquery.js"></script>
-	<script language="javascript" type="text/javascript" src="../../jquery.flot.js"></script>
+	<link href="js/flot/examples/examples.css" rel="stylesheet" type="text/css">
+	<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot/excanvas.min.js"></script><![endif]-->
+	<script language="javascript" type="text/javascript" src="js/flot/jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="js/flot/jquery.flot.js"></script>
 	<script type="text/javascript">
 
-    $(function () {
-        var data = [];
-        var options = {
-            lines: {
-                show: true
-            },
-            points: {
-                show: true
-            }
-        };
-        var dataurl = "data-eu-gdp-growth.json";
-
-        $.plot("#placeholder", data, options);
-
-        function onDataReceived(series) {
-            data.push(series);
+        $(function() {
+            var options = {
+                colors: ["#d19714", "#1fd1ae"]
+            };
+            var data = [];
             $.plot("#placeholder", data, options);
-        }
+            // Fetch one series, adding to what we already have
+            var alreadyFetched = {};
+            $("button.fetchSeries").click(function () {
+                var button = $(this);
+                // Find the URL in the link right next to us, then fetch the data
+                var dataurl = button.siblings("a").attr("href");
 
-        $.ajax({
-            url: dataurl,
-            type: "GET",
-            dataType: "json",
-            success: onDataReceived
+                $.ajax({
+                    url: dataurl,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (series) {
+                        if (!alreadyFetched[series.label]) {
+                            alreadyFetched[series.label] = true;
+                            data.push(series);
+                        }
+                        $.plot("#placeholder", data, options);
+                    }
+                });
+            });
+
+            // Load the first series by default, so we don't have an empty plot
+            $("button.fetchSeries:first").click();
         });
-    });
-	</script>
+
+    </script>
 </head>
 <body>
-	<div id="content">
-		<div class="demo-container">
-			<div id="placeholder" class="demo-placeholder"></div>
-		</div>
-	</div>
+<div id="content">
+        <div id="placeholder" class="demo-placeholder"  style="width:1600px;height:900px"> ></div>
+    <p>
+        <button class="fetchSeries">vwmpt_fv</button> <a href="data/vwmpt_fv_out_data.json"></a>
+    </p>
+    <p>
+        <button class="fetchSeries">vwmpt_ty</button> <a href="data/vwmpt_ty1_out_data.json"></a>
+    </p>
+
+</div>
 </body>
 </html>
