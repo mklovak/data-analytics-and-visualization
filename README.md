@@ -29,7 +29,7 @@ You will need to know some basics of market data and trading concepts. Also, a b
 
 
 
-* In order to run script.py you need to have pandas and json libraryes installed on your system.
+*In order to run script.py you need to have pandas and json libraryes installed on your system.
 
 ** Actual input data was deleted from a "data" folder because it may be considered as a confidential data. Contact @mklovak to see how provided solution works.
 
