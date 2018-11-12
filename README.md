@@ -19,15 +19,20 @@ You will need to know some basics of market data and trading concepts. Also, a b
 * [Bid/Ask](https://en.wikipedia.org/wiki/Bid%E2%80%93ask_spread)
 
 ## Solution provided:
-1. run script.py
-- it takes two unzipped csv files 'data/FVQUOTES.csv' and 'data/TYQUOTES.csv'
+1. run script.py*
+- it takes two unzipped csv files 'data/FVQUOTES.csv' and 'data/TYQUOTES.csv'**
 - calculate a VwMpt at each timestamp t for each instrument's QUOTES series
 - calculate rolling correlation with lookback of 100 samples
 - generate 3 json files: 'data/vwmpt_fv_out_data.json', 'data/vwmpt_ty_out_data.json', 'data/rho_out_data_t.json'
-2. open index.html file to view the report in a requested form
+2. open index.html file to view the report in a requested form***
 
-* Actual input data was deleted from a "data" folder because it may be considered as a confidential data. Contact @mklovak to see how provided solution works.
-** In order to run script.py you need to have pandas library installed on your system.
+
+
+
+* In order to run script.py you need to have pandas and json libraryes installed on your system.
+
+** Actual input data was deleted from a "data" folder because it may be considered as a confidential data. Contact @mklovak to see how provided solution works.
+
 *** In order to see graph visualisation you need to download, install and link to index.html file jQuery (https://jquery.com/download) and Flot (http://www.flotcharts.org/) libraries.
 
 

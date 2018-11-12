@@ -21,7 +21,7 @@ inst_quotes_two = pd.read_csv(csv_two)
 inst_quotes_one['vwmpt_fv'] = (inst_quotes_one['bestBidPrice'] + (inst_quotes_one['bestOfferPrice']-inst_quotes_one['bestBidPrice']))*(inst_quotes_one['bestBidQty'] / (inst_quotes_one['bestBidQty'] + inst_quotes_one['bestOfferQty']))
 inst_quotes_two['vwmpt_ty'] = (inst_quotes_two['bestBidPrice'] + (inst_quotes_two['bestOfferPrice']-inst_quotes_two['bestBidPrice']))*(inst_quotes_two['bestBidQty'] / (inst_quotes_two['bestBidQty'] + inst_quotes_two['bestOfferQty']))
 
-# round calculated vwmpt id you need that
+# round calculated vwmpt  (uncomment, if you will need that):
 # inst_quotes_one.vwmpt_fv = inst_quotes_one.vwmpt_fv.round(2)
 # inst_quotes_two.vwmpt_ty = inst_quotes_two.vwmpt_ty.round(2)
 
